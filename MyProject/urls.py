@@ -5,5 +5,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('registration/', include('registration.urls')), # <-- Links the registration app
+    path('registration/', include('registration.urls')), 
 ]

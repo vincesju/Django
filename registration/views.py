@@ -13,6 +13,7 @@ def register_user(request):
     
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+# ADD THIS NEW FUNCTION
 @api_view(['GET'])
 def get_users(request):
     users = UserRegistration.objects.all()
@@ -20,23 +21,23 @@ def get_users(request):
     return Response(serializer.data)
 
 @api_view(['GET', 'PUT', 'DELETE'])
-def user_detail(request, id):  # CHANGED FROM 'pk' to 'id'
+def user_detail(request, pk): 
     try:
-        user = UserRegistration.objects.get(id=id)  # CHANGED FROM 'pk' to 'id'
+        user = UserRegistration.objects.get(pk=pk)
     except UserRegistration.DoesNotExist:
-        return Response({"error": "User Not Found"}, status=status.HTTP_404_NOT_FOUND)
+        return Response({"error": "Not Found"}, status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
         serializer = RegistrationSerializer(user)
         return Response(serializer.data)
 
     elif request.method == 'PUT':
-        serializer = RegistrationSerializer(user, data=request.data, partial=True)  # ADDED partial=True
+        serializer = RegistrationSerializer(user, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         else:
-            print("Serializer errors:", serializer.errors)  # DEBUG
+            print(serializer.errors)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'DELETE':

@@ -9,8 +9,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-%etvmaxknw74$f$!m)6wa3#(@$q949ovqd*#9-78nkdoeuu^7^'
 DEBUG = True
 
-ALLOWED_HOSTS = ['peitel-backend.onrender.com', 'localhost', '127.0.0.1']
-CSRF_TRUSTED_ORIGINS = ['https://peitel-backend.onrender.com']
+ALLOWED_HOSTS = ['.onrender.com', 'localhost', '127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['https://*.onrender.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',

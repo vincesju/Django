@@ -3,7 +3,7 @@ from django.contrib.auth.hashers import make_password
 from .models import UserRegistration
 
 class RegistrationSerializer(serializers.ModelSerializer):
-    password = serializers.CharField(write_only=True, required=False)  # ADD required=False
+    password = serializers.CharField(write_only=True, required=False)
 
     class Meta:
         model = UserRegistration
@@ -17,7 +17,6 @@ class RegistrationSerializer(serializers.ModelSerializer):
         user = UserRegistration.objects.create(**validated_data)
         return user
 
-    # ADD THIS UPDATE METHOD
     def update(self, instance, validated_data):
         password = validated_data.pop('password', None)
         if password:

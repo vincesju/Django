@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <style>
+        body { font-family: Arial; padding: 40px; text-align: center; }
+        .button { display: inline-block; padding: 12px 24px; background: #2b6cb0; 
+                 color: white; text-decoration: none; border-radius: 6px; margin: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Welcome to User Management System</h1>
+    <a href="{% url 'registration:login_html' %}" class="button">Login to View Users</a>
+</body>
+</html>
